@@ -31,12 +31,12 @@
       if ([obj isKindOfClass:[NSString class]]) {
           // string
           NSString *str = (NSString *)obj;
-          CC(sqlite3_bind_text(stmt, idx, str.UTF8String, -1, NULL));
+          CC(sqlite3_bind_text(stmt, (int)(idx + 1), str.UTF8String, -1, NULL));
       }
       else if ([obj isKindOfClass:[NSNumber class]]) {
           // number
           NSNumber *num = (NSNumber *)obj;
-          CC(sqlite3_bind_double(stmt, idx, num.doubleValue));
+          CC(sqlite3_bind_double(stmt, (int)(idx + 1), num.doubleValue));
       }
     }];
 }

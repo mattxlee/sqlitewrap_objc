@@ -39,7 +39,7 @@
 
 - (NSString *)asStringWithColumnIndex:(NSInteger)columnIndex
 {
-    const unsigned char *sz = sqlite3_column_text(_stmt, columnIndex);
+    const unsigned char *sz = sqlite3_column_text(_stmt, (int)columnIndex);
     if (sz) {
         return [NSString stringWithUTF8String:(const char *)sz];
     }
@@ -50,7 +50,7 @@
 
 - (NSInteger)asIntegerWithColumnIndex:(NSInteger)columnIndex
 {
-    return sqlite3_column_int(_stmt, columnIndex);
+    return sqlite3_column_int(_stmt, (int)columnIndex);
 }
 
 @end
